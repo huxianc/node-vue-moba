@@ -2,13 +2,16 @@ const mongoose = require("mongoose")
 
 
 const schema = new mongoose.Schema({
-    name: {
+    title: {
         type: String
     },
-    parent: {
+    body: {
+        type: String
+    },
+    categories: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: "Category"
-    }
+    }]
 })
 
-module.exports = mongoose.model("Category", schema)
+module.exports = mongoose.model("Article", schema)

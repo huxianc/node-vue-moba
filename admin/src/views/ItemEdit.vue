@@ -1,8 +1,8 @@
 <template>
   <div class="about">
-    <h1>{{id?"编辑":"新建"}}分类</h1>
+    <h1>{{id?"编辑":"新建"}}物品</h1>
     <el-form :model="model" ref="model" label-width="80px" @submit.native.prevent="save">
-      <el-form-item label="上级分类">
+      <!-- <el-form-item label="上级分类">
         <el-select v-model="model.parent">
           <el-option
             v-for="item in parents"
@@ -11,9 +11,20 @@
             :value="item._id"
           ></el-option>
         </el-select>
-      </el-form-item>
+      </el-form-item>-->
       <el-form-item label="名称">
         <el-input v-model="model.name"></el-input>
+      </el-form-item>
+      <el-form-item label="图标">
+        <el-upload
+          class="avatar-uploader"
+          :action="$http.defaults.baseURL + '/upload'"
+          :show-file-list="false"
+          :on-success="afterUpload"
+        >
+          <img v-if="model.icon" :src="model.icon" class="avatar" />
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" native-type="submit">保存</el-button>
@@ -29,36 +40,35 @@ export default {
   },
   data() {
     return {
-      parents: [],
-      model: {
-        name: ""
-      }
+      model: {}
     };
   },
   created() {
     // 满足前面的才执行后面的
     this.id && this.fetch();
-    this.fetchParents();
   },
   methods: {
+    afterUpload(res) {
+      this.$set(this.model, "icon", res.url);
+    },
     async save() {
       let res;
       if (this.id) {
-        res = await this.$http.put(`rest/categories/${this.id}`, this.model);
+        res = await this.$http.put(`rest/items/${this.id}`, this.model);
       } else {
-        res = await this.$http.post("rest/categories", this.model);
+        res = await this.$http.post("rest/items", this.model);
       }
-      this.$router.push("/categories/list");
+      this.$router.push("/items/list");
       this.$message.success("保存成功" + res);
     },
     async fetch() {
-      const res = await this.$http.get(`rest/categories/${this.id}`);
+      const res = await this.$http.get(`rest/items/${this.id}`);
       this.model = res.data;
-    },
-    async fetchParents() {
-      const res = await this.$http.get(`rest/categories`);
-      this.parents = res.data;
-    },
+    }
   }
 };
 </script>
+
+<style>
+
+</style>
