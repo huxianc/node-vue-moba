@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "372210",
+      "name": "cc-menu-circle",
+      "font_class": "cc-menu-circle",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "5125459",
+      "name": "bg_hero",
+      "font_class": "bg_hero",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "6521606",
+      "name": "in",
+      "font_class": "in",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "8816386",
+      "name": "menu",
+      "font_class": "menu",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "9096004",
+      "name": "Back icon1",
+      "font_class": "back",
+      "unicode": "e501",
+      "unicode_decimal": 58625
+    }
+  ]
+}

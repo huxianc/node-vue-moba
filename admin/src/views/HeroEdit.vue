@@ -13,7 +13,8 @@
           <el-form-item label="头像">
             <el-upload
               class="avatar-uploader"
-              :action="$http.defaults.baseURL + '/upload'"
+              ::action="uploadUrl"
+              :headers="getAuthHeaders()"
               :show-file-list="false"
               :on-success="afterUpload"
             >
@@ -95,7 +96,7 @@
               <el-form-item label="小提示">
                 <el-input type="textarea" v-model="item.tips"></el-input>
               </el-form-item>
-              <el-form-item >
+              <el-form-item>
                 <el-button type="danger" @click="model.skills.splice(index,1)" size="small">删除</el-button>
               </el-form-item>
             </el-col>
@@ -173,5 +174,4 @@ export default {
 </script>
 
 <style>
-
 </style>
