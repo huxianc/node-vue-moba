@@ -33,3 +33,12 @@ export default {
   components: {}
 };
 </script>
+
+
+<style lang="scss" scoped>
+.topbar{
+  position: sticky;
+  z-index: 999;
+  top: 0;
+}
+</style>

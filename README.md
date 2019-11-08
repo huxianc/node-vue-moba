@@ -5,6 +5,11 @@
 https://www.bilibili.com/video/av53994523/?p=12
 
 
+复杂逻辑 ：
+https://www.bilibili.com/video/av53994523
+10 11 12 13
+
+
 ### admin 端
 - vue2-editor 富文本编辑器
 
@@ -17,8 +22,10 @@ https://www.bilibili.com/video/av53994523/?p=12
 - bcrypt 加密
 - jsonwebtoken token
 - http-assert 验证抛出错误
+- require-all
 
 
 ### web 端
-- vue-awesome-swiper 幻灯片
+- vue-awesome-swiper 基于vue封装的swiper组件
 - www.spritecow.com 精灵图定位辅助网站
+- dayjs 格式化日期

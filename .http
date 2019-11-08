@@ -1,0 +1,27 @@
+@url=http://localhost:3000/
+
+@json=Content-Type: application/json
+
+
+get {{url}}admin/api/rest/categories
+{{json}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYzI3NjQ2YWE0M2Q0M2RmY2E2NGYwZiIsImlhdCI6MTU3MzA5NDI4OH0.NP7YEoDmY9FE_16IxnnTeKszAX3SKIgius5nrey6Cvs
+
+###
+get {{url}}web/api/news/init
+{{json}}
+
+
+###
+get {{url}}web/api/news/list
+{{json}}
+###
+
+
+get {{url}}web/api/heros/init
+{{json}}
+
+
+###
+get {{url}}web/api/heros/list
+{{json}}

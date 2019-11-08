@@ -33,10 +33,10 @@ module.exports = app => {
     // 获取资源列表
     router.get('/', authMiddleware(), async (req, res) => {
         const queryOptions = {};
-        if (req.Model.modeName === "Category") {
+        if (req.Model.modelName === "Category") {
             queryOptions.populate = "parent"
         }
-        const items = await req.Model.find().setOptions(queryOptions).limit(10)
+        const items = await req.Model.find().setOptions(queryOptions).limit(100)
         res.send(items)
     })
     // 资源详情

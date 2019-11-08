@@ -23,6 +23,10 @@ a {
     text-decoration: none;
 }
 
+p{
+    line-height: 1.5em;
+}
+
 li {
     list-style: none;
 }
@@ -55,6 +59,14 @@ $size in $font-sizes {
     .fs-#{$sizeKey} {
         font-size: $size * $base-font-size;
     }
+}
+
+// 超出省略
+.text-ellipsis{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 // width height
@@ -198,5 +210,12 @@ $type in $spacing-types {
         width: 0.7692rem;
         height: 0.7692rem;
         background-position: 38.577% 52.076%;
+    }
+}
+
+// borders
+@each $dir in (top,right,bottom,left) {
+    .border-#{$dir}{
+        border-#{$dir}:1px solid $border-color;
     }
 }

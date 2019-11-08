@@ -29,11 +29,36 @@
 
     <m-list-card title="新闻资讯" icon="cc-menu-circle" :categories="newsCats">
       <template #items="{category}">
-        <div v-for="(items,i) in category.newsList" :key="i" class="py-2">
-          <span>[{{ items.categoryName }}]</span>
-          <span>|</span>
-          <span>{{ items.title }}</span>
-          <span>{{ items.date }}</span>
+        <router-link
+          tag="div"
+          :to="`/articles/${news._id}`"
+          v-for="(news,i) in category.newsList"
+          :key="i"
+          class="py-2 d-flex fs-lg"
+        >
+          <span class="text-info">[{{ news.categoryName }}]</span>
+          <span class="px-2">|</span>
+          <span class="flex-1 text-dark-1 text-ellipsis pr-2">{{ news.title }}</span>
+          <span class="text-grey-1 fs-sm">{{ news.createdAt | date }}</span>
+        </router-link>
+      </template>
+    </m-list-card>
+
+    <m-list-card title="英雄列表" icon="bg_hero" :categories="heroCats">
+      <template #items="{category}">
+        <div class="d-flex flex-wrap" style="margin:0 -0.5rem;">
+          <router-link
+          tag="div"
+            v-for="(hero,i) in category.heroList"
+            :key="i"
+            class="p-2 text-center"
+            style="width:20%;"
+            :to="`/heros/${hero._id}`"
+          >
+            <img :src="hero.avatar" alt srcset class="w-100" />
+            <div>{{ hero.name }}</div>
+          </router-link>
+
         </div>
       </template>
     </m-list-card>
@@ -45,11 +70,17 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
 // @ is an alias to /src
 
 export default {
   name: "home",
   components: {},
+  filters: {
+    date(val) {
+      return dayjs(val).format("MM/DD");
+    }
+  },
   data() {
     return {
       swiperOption: {
@@ -57,49 +88,23 @@ export default {
           el: ".pagination-home"
         }
       },
-      newsCats: [
-        {
-          name: "热门",
-          newsList: new Array(5).fill({}).map(v => ({
-            categoryName: "公告",
-            title: "《婉儿是怎么练成的》——揭秘婉儿学艺之路！",
-            date: "06/01"
-          }))
-        },
-        {
-          name: "新闻",
-          newsList: new Array(5).fill({}).map(v => ({
-            categoryName: "新闻",
-            title: "七城灯火，与你共赏！《王者荣耀》周年庆千灯会正式开园",
-            date: "11/06"
-          }))
-        },
-        {
-          name: "公告",
-          newsList: new Array(5).fill({}).map(v => ({
-            categoryName: "公告",
-            title: "10月30日全服不停机修复公告",
-            date: "10/30"
-          }))
-        },
-        {
-          name: "活动",
-          newsList: new Array(5).fill({}).map(v => ({
-            categoryName: "活动",
-            title: "告别孤单 浪漫峡谷陪你狂欢 秒杀皮肤限时返场",
-            date: "11/04"
-          }))
-        },
-        {
-          name: "赛事",
-          newsList: new Array(5).fill({}).map(v => ({
-            categoryName: "赛事",
-            title: "佛山“舞狮”助兴  城市赛全国半决赛精彩对抗即将来临！",
-            date: "11/07"
-          }))
-        },
-      ]
+      newsCats: [],
+      heroCats: []
     };
+  },
+  created() {
+    this.fetchNewsCats();
+    this.fetchHeroCats();
+  },
+  methods: {
+    async fetchNewsCats() {
+      const res = await this.$http.get("news/list");
+      this.newsCats = res.data;
+    },
+    async fetchHeroCats() {
+      const res = await this.$http.get("heros/list");
+      this.heroCats = res.data;
+    }
   }
 };
 </script>
