@@ -593,7 +593,7 @@ module.exports = app => {
 
     // 英雄详情
     router.get("/heros/:id", async (req, res) => {
-        const data = await Hero.findById(req.params.id).populate("categories").lean()
+        const data = await Hero.findById(req.params.id).populate("categories items1 items2 partners.hero").lean()
         // data.related = await Hero.find().where({
         //     categories: {
         //         $in: data.categories

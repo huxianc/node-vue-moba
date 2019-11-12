@@ -10,21 +10,22 @@ import router from './router'
 
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
- 
+
 // require styles
 import 'swiper/dist/css/swiper.css'
- 
-Vue.use(VueAwesomeSwiper, /* { default global options } */)
+
+Vue.use(VueAwesomeSwiper, /* { default global options } */ )
 
 import Card from "./components/card.vue"
-Vue.component("m-card",Card)
+Vue.component("m-card", Card)
 
 import ListCard from "./components/ListCard.vue"
-Vue.component("m-list-card",ListCard)
+Vue.component("m-list-card", ListCard)
 
 import axios from "axios"
 Vue.prototype.$http = axios.create({
-  baseURL:"http://localhost:3000/web/api"
+  baseURL: process.env.VUE_APP_API_URL || '/web/api'
+  // baseURL: "http://localhost:3000/web/api"
 })
 
 new Vue({
