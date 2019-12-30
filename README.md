@@ -29,3 +29,17 @@ https://www.bilibili.com/video/av53994523
 - vue-awesome-swiper 基于vue封装的swiper组件
 - www.spritecow.com 精灵图定位辅助网站
 - dayjs 格式化日期
+
+
+web端与admin端已打包到server端 进入server端跑服务即可
+```bash
+cd server
+yarn serve
+```
+
+```bash
+admin
+123456
+```
+
+没有数据库都是白说
