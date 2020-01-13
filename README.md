@@ -1,9 +1,6 @@
 # node-vue-moba
 仿王者荣耀管网移动端
 
-即将看：
-https://www.bilibili.com/video/av53994523/?p=12
-
 
 复杂逻辑 ：
 https://www.bilibili.com/video/av53994523
